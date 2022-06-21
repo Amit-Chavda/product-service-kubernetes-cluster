@@ -31,6 +31,11 @@ public class ProductInventoryController {
 		return inventoryService.findById(id);
 	}
 
+	@GetMapping("/findByProductId/{id}")
+	public ProductInventory findByProductId(@PathVariable Long id) {
+		return inventoryService.findByProductId(id);
+	}
+
 	@PostMapping("/save")
 	public ProductInventory save(@RequestBody ProductInventory productInventory) {
 		productInventory.setCreatedAt(LocalDate.now());

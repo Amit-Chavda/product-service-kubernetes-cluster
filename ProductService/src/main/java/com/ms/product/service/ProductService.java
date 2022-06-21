@@ -4,8 +4,11 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
 
 import com.ms.product.model.Product;
+import com.ms.product.model.ProductCategory;
+import com.ms.product.model.ProductInventory;
 import com.ms.product.repository.ProductRepository;
 
 @Service
@@ -13,6 +16,9 @@ public class ProductService {
 
 	@Autowired
 	private ProductRepository productRepository;
+
+	@Autowired
+	private RestTemplate restTemplate;
 
 	public Product save(Product product) {
 		return productRepository.save(product);
@@ -23,7 +29,20 @@ public class ProductService {
 	}
 
 	public Product findById(Long id) {
-		return productRepository.findById(id).get();
+
+		ProductInventory productInventory = restTemplate
+				.getForObject("http://localhost:5003/inventory/findByProductId/" + id, ProductInventory.class);
+
+		ProductCategory productCategory = restTemplate.getForObject(
+				"http://localhost:5002/category/findByProductId/" + id,
+
+				ProductCategory.class);
+
+		Product product = productRepository.findById(id).get();
+		product.setCategory(productCategory);
+		product.setInventory(productInventory);
+
+		return product;
 	}
 
 }

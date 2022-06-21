@@ -8,4 +8,6 @@ import com.ms.productinventory.model.ProductInventory;
 @Repository
 public interface ProductInventoryRepository extends JpaRepository<ProductInventory, Long> {
 
+	ProductInventory findByProductId(Long productId);
+
 }

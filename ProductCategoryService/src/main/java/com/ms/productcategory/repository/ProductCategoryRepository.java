@@ -8,4 +8,6 @@ import com.ms.productcategory.model.ProductCategory;
 @Repository
 public interface ProductCategoryRepository extends JpaRepository<ProductCategory, Long> {
 
+	ProductCategory findByProductId(Long productId);
+
 }

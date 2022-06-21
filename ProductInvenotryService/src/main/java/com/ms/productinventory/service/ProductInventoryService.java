@@ -25,4 +25,8 @@ public class ProductInventoryService {
 		return productInventoryRepository.findById(id).get();
 	}
 
+	public ProductInventory findByProductId(Long id) {
+		return productInventoryRepository.findByProductId(id);
+	}
+
 }

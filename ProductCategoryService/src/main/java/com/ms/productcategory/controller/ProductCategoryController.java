@@ -31,6 +31,11 @@ public class ProductCategoryController {
 		return categoryService.findById(id);
 	}
 
+	@GetMapping("/findByProductId/{id}")
+	public ProductCategory findByProductId(@PathVariable Long id) {
+		return categoryService.findByProductId(id);
+	}
+
 	@PostMapping("/save")
 	public ProductCategory save(@RequestBody ProductCategory productCategory) {
 		productCategory.setCreatedAt(LocalDate.now());
