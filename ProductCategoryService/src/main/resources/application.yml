@@ -1,7 +1,17 @@
 spring:
   application:
     name: Product-Category-Service
-
+  datasource:
+    url: jdbc:mysql://localhost:3306/product?allowPublicKeyRetrieval=true&useSSL=false
+    username: root
+    password: root
+    driver-class-name:  com.mysql.cj.jdbc.Driver
+  jpa:
+    show-sql: true
+    properties:
+      hibernate:
+        dialact : org.hibernate.dialect.MySQL5Dialect
+    
 server:
   port: 5002
   
