@@ -1,10 +1,14 @@
 spring:
   application:
     name: Product-Service
-
+  data:
+    mongodb:
+      database: products
+      host: localhost
+      port: 27017
 server:
   port: 5001
-  
+ 
 eureka:
   client:
     fetch-registry: true
