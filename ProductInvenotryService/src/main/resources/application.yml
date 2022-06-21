@@ -1,0 +1,13 @@
+spring:
+  application:
+    name: Product-Inventotary-Service
+
+server:
+  port: 5003
+  
+eureka:
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+    service-url:
+      defaultZone: http://localhost:7001/eureka
