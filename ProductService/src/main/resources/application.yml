@@ -4,8 +4,8 @@ spring:
   data:
     mongodb:
       database: products
-      host: localhost
-      port: 27017
+      host: mongodb
+
 server:
   port: 5001
  
@@ -14,4 +14,4 @@ eureka:
     fetch-registry: true
     register-with-eureka: true
     service-url:
-      defaultZone: http://localhost:7001/eureka
+      defaultZone: http://eureka-server:7001/eureka
