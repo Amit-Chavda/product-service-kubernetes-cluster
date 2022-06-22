@@ -1,0 +1,55 @@
+version: '3'
+services:
+  product-service-gateway:
+    image: product-service-gateway
+    ports:
+    - 5000:5000
+    links:
+    - eureka-server
+    - product-service
+    - category-service
+    - inventory-service
+  eureka-server:
+    image: eureka
+    ports:
+    - 7001:7001
+  product-service:
+    depends_on:
+    - mongodb
+    image: product-service
+    ports:
+    - 5001:5001
+    links:
+    - eureka-server
+    - mongodb
+  category-service:
+    depends_on:
+    - mysql-standalone
+    image: product-category-service
+    ports:
+    - 5002:5002
+    links:
+    - eureka-server
+    - mysql-standalone
+  inventory-service:
+    depends_on:
+    - mysql-standalone
+    image: product-inventory-service
+    ports:
+    - 5003:5003
+    links:
+    - eureka-server
+    - mysql-standalone
+  mongodb:
+    image: mongo
+    ports:
+    - 27018:27017
+  mysql-standalone:
+    image: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_USER: root
+      MYSQL_PASSWORD: root
+      MYSQL_DATABASE: product
+    ports:
+    - 3308:3306
