@@ -1,4 +1,8 @@
 version: '3'
+networks:
+  ProductNetwork:
+    name: ProductNetwork
+    driver: bridge
 services:
   product-service-gateway:
     image: product-service-gateway
@@ -9,10 +13,14 @@ services:
     - product-service
     - category-service
     - inventory-service
+    networks:
+    - ProductNetwork
   eureka-server:
     image: eureka
     ports:
     - 7001:7001
+    networks:
+    - ProductNetwork
   product-service:
     depends_on:
     - mongodb
@@ -22,6 +30,8 @@ services:
     links:
     - eureka-server
     - mongodb
+    networks:
+    - ProductNetwork
   category-service:
     depends_on:
     - mysql-standalone
@@ -31,6 +41,8 @@ services:
     links:
     - eureka-server
     - mysql-standalone
+    networks:
+    - ProductNetwork
   inventory-service:
     depends_on:
     - mysql-standalone
@@ -40,16 +52,22 @@ services:
     links:
     - eureka-server
     - mysql-standalone
+    networks:
+    - ProductNetwork
   mongodb:
     image: mongo
     ports:
     - 27018:27017
+    networks:
+    - ProductNetwork
   mysql-standalone:
     image: mysql
     environment:
       MYSQL_ROOT_PASSWORD: root
-      MYSQL_USER: root
-      MYSQL_PASSWORD: root
+      MYSQL_USER: sa
       MYSQL_DATABASE: product
+      MYSQL_PASSWORD: root
     ports:
     - 3308:3306
+    networks:
+    - ProductNetwork
