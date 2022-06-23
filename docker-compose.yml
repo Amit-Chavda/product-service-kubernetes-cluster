@@ -30,6 +30,8 @@ services:
     links:
     - eureka-server
     - mongodb
+    - category-service
+    - inventory-service
     networks:
     - ProductNetwork
   category-service:

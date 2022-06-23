@@ -31,10 +31,10 @@ public class ProductService {
 	public Product findById(Long id) {
 
 		ProductInventory productInventory = restTemplate
-				.getForObject("http://localhost:5003/inventory/findByProductId/" + id, ProductInventory.class);
+				.getForObject("http://inventory-service:5003/inventory/findByProductId/" + id, ProductInventory.class);
 
 		ProductCategory productCategory = restTemplate.getForObject(
-				"http://localhost:5002/category/findByProductId/" + id,
+				"http://category-service:5002/category/findByProductId/" + id,
 
 				ProductCategory.class);
 
