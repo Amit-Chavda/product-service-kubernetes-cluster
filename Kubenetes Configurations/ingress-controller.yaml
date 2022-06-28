@@ -28,4 +28,4 @@ spec:
               service:
                 name: inventory-service
                 port:
-                  number: 5002
+                  number: 5003
