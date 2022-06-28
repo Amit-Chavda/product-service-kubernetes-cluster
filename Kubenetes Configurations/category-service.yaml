@@ -14,6 +14,7 @@ spec:
     metadata:
       labels:
         app: category-service
+        tier: backend
     spec:
       containers:
         - name: category-service
