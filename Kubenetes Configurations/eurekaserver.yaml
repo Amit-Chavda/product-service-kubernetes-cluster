@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: eureka-server
+  namespace: default
+  labels:
+    app: eureka-server
+spec:
+  selector:
+    matchLabels:
+      app: eureka-server
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: eureka-server
+    spec:
+      containers:
+        - name: eureka-server
+          image: amitchavda00/eureka-server:1.0
+          ports:
+            - containerPort: 7001
+              name: eureka-server
+          imagePullPolicy: Always
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: eureka-server
+  namespace: default
+spec:
+  selector:
+    app: eureka-server
+  ports:
+    - name: eureka-server
+      protocol: TCP
+      port: 7001
+      targetPort: 7001
