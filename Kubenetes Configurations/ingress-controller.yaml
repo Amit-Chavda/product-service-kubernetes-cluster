@@ -15,3 +15,17 @@ spec:
                 name: eureka-server
                 port:
                   number: 7001
+          - path: /category
+            pathType: Prefix
+            backend:
+              service:
+                name: category-service
+                port:
+                  number: 5002
+          - path: /inventory
+            pathType: Prefix
+            backend:
+              service:
+                name: inventory-service
+                port:
+                  number: 5002
