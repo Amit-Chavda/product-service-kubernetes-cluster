@@ -29,3 +29,10 @@ spec:
                 name: inventory-service
                 port:
                   number: 5003
+          - path: /product
+            pathType: Prefix
+            backend:
+              service:
+                name: product-service
+                port:
+                  number: 5001

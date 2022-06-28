@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: product-service
+  namespace: default
+  labels:
+    app: product-service
+spec:
+  selector:
+    matchLabels:
+      app: product-service
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: product-service
+    spec:
+      containers:
+        - name: product-service
+          image: amitchavda00/product-service:1.0
+          ports:
+            - containerPort: 5001
+          imagePullPolicy: Always
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: product-service
+  namespace: default
+spec:
+  selector:
+    app: product-service
+  ports:
+    - name: product-service
+      protocol: TCP
+      port: 5001
+      targetPort: 5001
