@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: inventory-service
+  namespace: default
+  labels:
+    app: inventory-service
+spec:
+  selector:
+    matchLabels:
+      app: inventory-service
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: inventory-service
+    spec:
+      containers:
+        - name: inventory-service
+          image: amitchavda00/inventory-service:1.0
+          ports:
+            - containerPort: 5003
+          imagePullPolicy: Always
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: inventory-service
+  namespace: default
+spec:
+  selector:
+    app: inventory-service
+  ports:
+    - name: inventory-service
+      protocol: TCP
+      port: 5003
+      targetPort: 5003
