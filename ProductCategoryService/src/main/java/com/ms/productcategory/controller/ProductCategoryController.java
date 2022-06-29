@@ -41,4 +41,11 @@ public class ProductCategoryController {
 		productCategory.setCreatedAt(LocalDate.now());
 		return categoryService.save(productCategory);
 	}
+
+
+	int sub(int x,int y){
+		if(x<5 && y>10){
+			return 0;
+		}return x+y;
+	}
 }
