@@ -28,14 +28,17 @@ To run this project, you can follow steps given hereby:
 #### 4.  Locate docker-compose.yml file and run it using doekcer-compose up command.
 
 
-## Design Architecture
-Get it better with visuals
-<br/>
-![Product Service Architecture](https://user-images.githubusercontent.com/47694676/175242948-f71fd196-4b3a-40b9-a0a1-fae944b1b1a2.png)
+## Microservice Architecture
+<br/>![Product Service Architecture](https://user-images.githubusercontent.com/47694676/175242948-f71fd196-4b3a-40b9-a0a1-fae944b1b1a2.png)
+
+
+## Kubernets Cluster
+<br/>![product-service-kubernetes-cluster drawio (1)](https://user-images.githubusercontent.com/47694676/179526860-a008e574-284d-4c93-a035-7521cbcc5c93.png)
+Zoom a bit for clearity!
+
 
 ## Tools and Technologies used
-* Java
 * Spring boot
-* Docker
-* Microservice Architecture
+* Docker Container
 * Spring cloud
+* Kubernetes
