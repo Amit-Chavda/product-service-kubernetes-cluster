@@ -39,6 +39,6 @@ Zoom a bit for clearity!
 
 ## Tools and Technologies used
 * Spring boot
-* Docker Container
 * Spring cloud
+* Docker
 * Kubernetes
